@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# plot heatmap\nplot_my_heatmap <- function(mat, r, c, te){\n  require(plotly)\n  m <- list(l = 300, r = 0, b = 100, t = 100)\n  p <- plot_ly(\n    y = r, x = c,\n    text = te, \n    z = mat, type = \"heatmap\", hoverinfo = \"text\", width = 800, height = 800, colors=c(\"red\",\"green\")\n  ) %>% layout(autosize = F, margin = m, title = 'Q(s,a) estimates')\n  p\n}",
+    "created" : 1549190091063.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "380933933",
+    "id" : "279AD9C9",
+    "lastKnownWriteTime" : 1548887288,
+    "last_content_update" : 1548887288,
+    "path" : "~/Documents/kdd_2019_diabetes/kdd_diabetes/viz_policy.R",
+    "project_path" : "viz_policy.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,9 @@
+{
+    "path" : "~/Documents/kdd_diabetes",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

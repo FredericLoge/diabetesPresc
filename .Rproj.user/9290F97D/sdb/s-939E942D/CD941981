@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "is_na_1 <- is.na(tmp_$value_blood_glucose_measurement_)\nis_na_2 <- is.na(tmp_$value_regular_insulin_dose_)\nis_na_3 <- is.na(tmp_$value_nph_insulin_dose_)\nis_na_4 <- is.na(tmp_$value_ultralente_insulin_dose_)\ntable(is_na_1)\ntable(is_na_2)\ntable(is_na_3)\ntable(is_na_4)\ntable(is_na_1, (!is_na_2 | !is_na_3 | !is_na_4))\ntable(is_na_1, is_na_3)\n",
+    "created" : 1549216809994.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "4116645654",
+    "id" : "CD941981",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1549216976356,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

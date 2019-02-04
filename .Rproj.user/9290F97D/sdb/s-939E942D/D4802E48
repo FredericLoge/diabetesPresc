@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "reward <- function(g){\n  r <- 1*(g >= 80 & g <= 140)\n  return(r)\n}\n\nreward <- function(g){\n  r <- exp(- (g - 100)^4 / (50)^4)\n  return(r)\n}\n\nreward <- function(g){\n  # taking ra close to 0, you get a quasi-uniform reward, equal to 1\n  # taking ra very large, you get a quasi 0-1 reward, depending on whether you are within [a;b]\n  a <- 80\n  b <- 120\n  ra <- 3\n  r <- exp(- (g - a)^2 / (a/ra)^2) * (g < a) + \n    exp(- (g - b)^2 / (b/ra)^2) * (g > b) + \n    1 * (g >= a & g <= b)\n  return(r)\n}\n\n# reward <- function(g){\n#   r <- ((g-100)^2 / 100^2) * exp(- (abs(g - 100))^2 / (100)^2)\n#   return(r)\n# }\n\nif(FALSE){ # to prevent to run when sourcing\n  x <- seq(0, 300, 1)\n  y <- reward(g = x)\n  plot(x = x, y = y, type = 'o', pch = 20, cex = 0.5)\n  for(u in c(60, 100, 140)){\n    segments(x0 = u, y0 = 0, y1 = reward(g = u), lty = 2)\n  }\n  dfxy <- data.frame('x' = x, 'y' = y)\n  m <- 20\n  ggplot(data = dfxy, mapping = aes(x=x, y=y)) + \n    geom_line() + \n    geom_segment(aes(x=80, xend=80, y=0, yend=reward(80)), lty=2) +\n    geom_segment(aes(x=120, xend=120, y=0, yend=reward(120)), lty=2) +\n    xlab('Glucose Level') +\n    ylab('Reward associated') +\n    ggtitle('Reward level \\n as a function of registered glucose.') +\n    theme(\n      title = element_text(size = 20, margin = margin(m,m,m,m)), \n      plot.margin = margin(m, m, m, m),\n      axis.title.x = element_text(size = 20, margin = margin(m,m,m,m)),\n      axis.title.y = element_text(size = 20, margin = margin(m,m,m,m), hjust = 1/2, angle = 90)\n    )\n  \n} \n\n",
+    "created" : 1548885824733.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "26109628",
+    "id" : "D4802E48",
+    "lastKnownWriteTime" : 1549183403,
+    "last_content_update" : 1549183403484,
+    "path" : "~/Documents/kdd_2019_diabetes/kdd_diabetes/reward.R",
+    "project_path" : "reward.R",
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# evaluate policy followed on real data\nget_empirical_policy <- function(){\n  # recover states throughout dataset\n  sta <- get_state(daytime_0 = tm_$daytime_0, glucose_0 = tm_$glucose_0)\n  # cross states and actions from available dataset\n  nsa <- table(factor(sta, levels = 1:nb_states_), factor(tm_$action_0, levels = levels_action_))\n   # return Q matrix\n  return(nsa)\n}\n\n# evaluate a completely random policy\nevaluate_random <- function(nb_experiments, length_traj, gamma = 1){\n  v <- replicate(nb_experiments, {\n    reco <- base::sample(x = 1:length(levels_action_), size = nb_states_, replace = TRUE)\n    simu <- simulate_batch_w_reco(N = length_traj, reco = reco)\n    simu$reward <- reward(simu$glucose_0)\n    sum(gamma^{1:length_traj - 1} * simu$reward)\n  })\n}\n\n# evaluate a policy encoded in a vector with state to single action assigment\nevaluate_reco <- function(reco, nb_experiments, length_traj, gamma = 1){\n  v <- replicate(nb_experiments, {\n    simu <- simulate_batch_w_reco(N = length_traj, reco = reco)\n    simu$reward <- reward(simu$glucose_0)\n    sum(gamma^{1:length_traj - 1} * simu$reward)\n  })\n}\n",
+    "created" : 1549192439269.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2169559875",
+    "id" : "DEB7F8A2",
+    "lastKnownWriteTime" : 1548901528,
+    "last_content_update" : 1548901528,
+    "path" : "~/Documents/kdd_2019_diabetes/kdd_diabetes/evaluate_policy.R",
+    "project_path" : "evaluate_policy.R",
+    "properties" : {
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
